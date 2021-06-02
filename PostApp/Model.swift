@@ -24,11 +24,12 @@ struct Item: Decodable {
     let isCommentable: Bool
     let author: Author?
     let contents: [Content]?
+    let stats: Stats
 }
 
 struct Content: Decodable {
     let data: ContentData?
-    let type: String?
+    let type: ContentType?
 }
 
 struct ContentData: Decodable {
@@ -44,7 +45,7 @@ enum ContentType: String, Decodable {
     case audio = "AUDIO"
     case tags = "TAGS"
     case image = "IMAGE"
-    case imageGif = "IMAGE-GIF"
+    case imageGif = "IMAGE_GIF"
 }
 
 struct ExtraLarge: Decodable {
@@ -58,7 +59,6 @@ struct PreviewImageData: Decodable {
 struct ExtraSmall: Decodable {
     let url: String
 }
-
 
 
 struct Author: Decodable {
@@ -78,4 +78,14 @@ struct PhotoOriginal: Decodable {
 
 struct LinkJpg: Decodable {
     let url: String
+}
+
+struct Stats: Decodable {
+    let likes, views, comments, shares: Comments
+    let replies: Comments
+}
+
+struct Comments: Decodable {
+    let count: Int?
+    let my: Bool
 }

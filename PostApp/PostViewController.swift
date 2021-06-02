@@ -13,12 +13,8 @@ class PostViewController: UIViewController {
     var urlForAuthor: URL!
     var userName: String!
     var textPost: String!
-    var urlForPostImage: URL!
-    var player: AVPlayer!
-    var playerViewController: AVPlayerViewController!
-    
-   
-
+    var contentType: String!
+    var likeLabel: String!
         
     private var mainView: PostView {
         return view as! PostView
@@ -31,19 +27,10 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.imageView.downloaded(from: urlForAuthor)
-       // mainView.postImage.downloaded(from: urlForPostImage)
-        mainView.labelName.text = "Published by: \(userName ?? "erorr")"
+        mainView.labelName.text = "Published by \(userName ?? "erorr")"
         mainView.labelText.text = textPost
-
-//        let videoURL = URL(string: "videoUrl")
-//        player = AVPlayer(url: videoURL!)
-//        playerViewController = AVPlayerViewController()
-//        playerViewController.player = self.player
-//        
-//        playerViewController.view.frame = self.playerView.frame
-//        playerViewController.player?.pause()
-//        self.playerView.addSubview(playerViewController.view)
-//        player.play()
+        mainView.contentLabel.text = "Content type \(contentType ?? "erorr")"
+        mainView.labelLike.text = "❤️\(likeLabel ?? "erorr")"
     }
     
 }

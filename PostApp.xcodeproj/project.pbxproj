@@ -72,7 +72,6 @@
 			children = (
 				A77FDA19265D32C10078F667 /* AppDelegate.swift */,
 				A77FDA1B265D32C10078F667 /* SceneDelegate.swift */,
-				A77FDA37265D42B40078F667 /* TabBarViewController.swift */,
 				A77FDA31265D383C0078F667 /* MainView.swift */,
 				A77FDA1D265D32C10078F667 /* MainViewController.swift */,
 				A798AA00265E4A28005D8376 /* PostViewController.swift */,
@@ -81,6 +80,7 @@
 				A77FDA33265D39900078F667 /* CollectionViewCell.swift */,
 				A77FDA2D265D35380078F667 /* Service.swift */,
 				A77FDA2F265D35A40078F667 /* Model.swift */,
+				A77FDA37265D42B40078F667 /* TabBarViewController.swift */,
 				A77FDA22265D32CA0078F667 /* Assets.xcassets */,
 				A77FDA24265D32CA0078F667 /* LaunchScreen.storyboard */,
 				A77FDA27265D32CA0078F667 /* Info.plist */,

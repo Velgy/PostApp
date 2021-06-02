@@ -35,13 +35,20 @@ class PostView: UIView{
         return label
     }()
     
-    let postImage: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .white
-        image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 10.0
-        return image
+    let contentLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let labelLike: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -49,7 +56,8 @@ class PostView: UIView{
         addSubview(imageView)
         addSubview(labelName)
         addSubview(labelText)
-        addSubview(postImage)
+        addSubview(contentLabel)
+        addSubview(labelLike)
         backgroundColor = .white
         setConstraints()
     }
@@ -73,9 +81,10 @@ class PostView: UIView{
         labelText.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30.0).isActive = true
         labelText.leftAnchor.constraint(equalTo: imageView.leftAnchor).isActive = true
         
-        postImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 20.0).isActive = true
-        postImage.topAnchor.constraint(equalTo: labelText.bottomAnchor, constant: 30.0).isActive = true
-        postImage.rightAnchor.constraint(equalTo: rightAnchor, constant: 30.0).isActive = true
-        postImage.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
+        contentLabel.topAnchor.constraint(equalTo: labelText.bottomAnchor, constant: 30.0).isActive = true
+        contentLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        labelLike.leftAnchor.constraint(equalTo: leftAnchor, constant: 20.0).isActive = true
+        labelLike.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -200.0).isActive = true
     }
 }

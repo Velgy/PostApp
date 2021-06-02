@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
     let service = Service()
     let orderBy: OrderBy
     var loadMoreStatus = false
-    var refreshControl: UIRefreshControl!
     var cursor: String?
     var items: [Item] = []
     
@@ -68,7 +67,6 @@ class MainViewController: UIViewController {
                         self.loadMoreStatus = false
                     }
                 }
-                
             }
         }
     }
@@ -107,22 +105,24 @@ extension MainViewController: UICollectionViewDelegate {
         
         let name = items[indexPath.row].author?.name
         let photo = items[indexPath.row].author?.photo?.data.original.url
+        let typeContent = items[indexPath.row].type
+        
         if let textPost = items[indexPath.row].contents?[indexPath.section].data?.value {
             viewController.textPost = textPost
         }
-       // let postImage = items[indexPath.row].contents?[indexPath.section].data?.original?.url
         
-       // viewController.urlForPostImage = URL(string: postImage ?? "nil")
+        if let countLike = items[indexPath.row].stats.likes.count {
+            
+            viewController.likeLabel = String(countLike)
+        }
+        
+        viewController.contentType = typeContent
         viewController.urlForAuthor = URL(string: photo ?? "nil")
         viewController.userName = name
         
         self.navigationController?.pushViewController(viewController, animated: true)
         
-        
     }
-    
-    
-    
 }
 
 
@@ -138,15 +138,9 @@ extension MainViewController: UICollectionViewDataSource {
         
         if let photo = items[indexPath.row].author?.photo?.data.original.url {
                 cell.imageView.downloaded(from: "\(photo)")
-    
-            
         }
         return cell
     }
-    
-    
-    
-
 }
 
 
